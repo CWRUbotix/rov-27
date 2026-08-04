@@ -1,6 +1,8 @@
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
+from datetime import datetime
 from enum import IntEnum
+from pathlib import Path
 from typing import NamedTuple
 
 import cv2
@@ -9,7 +11,7 @@ from cv_bridge import CvBridge
 from numpy.typing import NDArray
 from PyQt6.QtCore import Qt, pyqtBoundSignal, pyqtSignal, pyqtSlot
 from PyQt6.QtGui import QImage, QMouseEvent, QPixmap
-from PyQt6.QtWidgets import QLabel, QPushButton, QVBoxLayout, QWidget
+from PyQt6.QtWidgets import QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QWidget
 from rclpy.qos import qos_profile_default
 from sensor_msgs.msg import Image
 
@@ -294,3 +296,111 @@ class PauseableVideoWidget(VideoWidget):
         """Toggle whether this widget is paused or playing."""
         self.is_paused = not self.is_paused
         self.button.setText(self.PAUSED_TEXT if self.is_paused else self.PLAYING_TEXT)
+
+
+class SaveableVideoWidget(VideoWidget):
+    """A video stream widget that can save screenshots and record video clips."""
+
+    def __init__(
+        self,
+        camera_description: CameraDescription,
+        image_prefix: str = 'screenshot_',
+        image_ext: str = 'png',
+        video_prefix: str = 'recording_',
+        video_ext: str = 'mp4',
+        fps: float = 30.0,
+    ) -> None:
+        super().__init__(camera_description)
+
+        self.image_prefix = image_prefix
+        self.image_ext = image_ext.lstrip('.')
+        self.video_prefix = video_prefix
+        self.video_ext = video_ext.lstrip('.')
+        self.fps = fps
+
+        self.last_frame: MatLike | None = None
+        self.is_recording = False
+        self.video_writer: cv2.VideoWriter | None = None
+        self.video_size: tuple[int, int] = (0, 0)
+
+        button_layout = QHBoxLayout()
+
+        self.save_img_button = QPushButton('Save Image')
+        self.save_img_button.clicked.connect(self.save_image)
+        button_layout.addWidget(self.save_img_button)
+
+        self.record_button = QPushButton('Record Video')
+        self.record_button.clicked.connect(self.toggle_recording)
+        button_layout.addWidget(self.record_button)
+
+        layout = self.layout()
+        if isinstance(layout, QVBoxLayout):
+            layout.addLayout(button_layout)
+        else:
+            GUINode().get_logger().error('Missing Layout')
+
+    @pyqtSlot(Image)
+    def handle_frame(self, frame: Image) -> None:
+        cv_image = self.cv_bridge.imgmsg_to_cv2(frame, desired_encoding='passthrough')
+        frame_to_save = cv_image
+        if self.camera_description.type == CameraType.ETHERNET:
+            frame_to_save = cv2.cvtColor(cv_image.astype('uint8'), cv2.COLOR_BAYER_BGGR2BGR)
+
+        self.last_frame = frame_to_save
+
+        if self.is_recording and self.video_writer is not None:
+            h, w = frame_to_save.shape[:2]
+            if (w, h) != self.video_size:
+                frame_to_save = cv2.resize(frame_to_save, self.video_size)
+            self.video_writer.write(frame_to_save)
+
+        super().handle_frame(frame)
+
+    def save_image(self) -> None:
+        if self.last_frame is None:
+            return
+
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = f'{self.image_prefix}{timestamp}.{self.image_ext}'
+
+        filepath = Path(filename)
+        if filepath.parent:
+            filepath.parent.mkdir(parents=True, exist_ok=True)
+
+        cv2.imwrite(str(filepath), self.last_frame)
+
+    def toggle_recording(self) -> None:
+        if self.is_recording:
+            self.stop_recording()
+        else:
+            self.start_recording()
+
+    def start_recording(self) -> None:
+        if self.last_frame is None:
+            return
+
+        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+        filename = f'{self.video_prefix}{timestamp}.{self.video_ext}'
+
+        filepath = Path(filename)
+        if filepath.parent:
+            filepath.parent.mkdir(parents=True, exist_ok=True)
+
+        h, w = self.last_frame.shape[:2]
+        self.video_size = (w, h)
+
+        fourcc_code = 'mp4v' if self.video_ext.lower() == 'mp4' else 'XVID'
+        fourcc = cv2.VideoWriter_fourcc(*fourcc_code)
+
+        self.video_writer = cv2.VideoWriter(
+            str(filepath), fourcc, self.fps, self.video_size
+        )
+        self.is_recording = True
+        self.record_button.setText('Stop Recording')
+
+    def stop_recording(self) -> None:
+        self.is_recording = False
+        if self.video_writer is not None:
+            self.video_writer.release()
+            self.video_writer = None
+        self.record_button.setText('Record Video')
