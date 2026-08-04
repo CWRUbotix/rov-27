@@ -23,29 +23,15 @@ def generate_launch_description() -> LaunchDescription:
         'compute_brightness': False,
         'adjust_timestamp': True,
         'dump_node_map': False,
-        # set parameters defined in blackfly_s.yaml
         'gain_auto': 'Continuous',
-        # 'pixel_format': 'BayerRG8',
         'exposure_auto': 'Continuous',
-        # to use a user set, do this:
-        # 'user_set_selector': 'UserSet0',
-        # 'user_set_load': 'Yes',
-        # These are useful for GigE cameras
-        # Uncomment throughput_limit & packet_size to enable jumbo packets
-        # 'device_link_throughput_limit': 380000000,
-        # 'gev_scps_packet_size': 9000,
-        # ---- to reduce the sensor width and shift the crop
-        # 'image_width': 1408,
-        # 'image_height': 1080,
-        # 'offset_x': 16,
-        # 'offset_y': 0,
         'binning_x': 2,
         'binning_y': 2,
-        'connect_while_subscribed': True,
+        'connect_while_subscribed': False,
         'frame_rate_auto': 'Off',
-        'frame_rate': 60.0,
+        'frame_rate': 30.0,
         'frame_rate_enable': True,
-        'buffer_queue_size': 10,
+        'buffer_queue_size': 1,
         'trigger_mode': 'Off',
         'chunk_mode_active': True,
         'chunk_selector_frame_id': 'FrameID',
@@ -58,7 +44,6 @@ def generate_launch_description() -> LaunchDescription:
         'chunk_enable_timestamp': True,
     }
 
-    # launches node to run front flir camera
     front_cam = Node(
         package='spinnaker_camera_driver',
         executable='camera_driver_node',
@@ -74,7 +59,6 @@ def generate_launch_description() -> LaunchDescription:
         condition=IfCondition(front_arg),
     )
 
-    # launches node to run bottom flir camera
     bottom_cam = Node(
         package='spinnaker_camera_driver',
         executable='camera_driver_node',
