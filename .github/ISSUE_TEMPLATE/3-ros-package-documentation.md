@@ -1,7 +1,7 @@
 ---
 name: ROS Package Documentation
 about: Request an update to the documentation for a ROS package
-title: "[ROS DOCUMENTATION]: "
+title: "[ROS DOCUMENTATION] "
 labels: ''
 assignees: ''
 type: Documentation
