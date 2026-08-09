@@ -1,7 +1,7 @@
 ---
 name: Documentation
 about: Request the update or creation some documentation (other than ROS packages)
-title: "[DOCUMENTATION]: "
+title: "[DOCUMENTATION] "
 labels: ''
 assignees: ''
 type: Documentation
