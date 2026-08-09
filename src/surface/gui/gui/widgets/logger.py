@@ -9,11 +9,11 @@ from gui.gui_node import GUINode
 # Dictionary linking LoggingSeverity to a QColor
 SEVERITY_LEVELS_DICT = {
     LoggingSeverity.UNSET: QColor(0, 0, 0),
-    LoggingSeverity.DEBUG: QColor(50, 50, 50),
-    LoggingSeverity.INFO: QColor(150, 150, 150),
-    LoggingSeverity.WARN: QColor(150, 150, 0),
-    LoggingSeverity.ERROR: QColor(255, 0, 0),
-    LoggingSeverity.FATAL: QColor(168, 0, 0),
+    LoggingSeverity.DEBUG: QColor(128, 128, 128),  # Gray
+    LoggingSeverity.INFO: QColor(200, 200, 200),   # Light gray (dark theme)
+    LoggingSeverity.WARN: QColor(255, 255, 0),     # Yellow
+    LoggingSeverity.ERROR: QColor(255, 0, 0),      # Red
+    LoggingSeverity.FATAL: QColor(168, 0, 0),      # Dark red
 }
 
 
