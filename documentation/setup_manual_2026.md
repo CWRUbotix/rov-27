@@ -23,19 +23,19 @@
 
 When you walk into the bay, turn right and this is the shelf against the rightmost wall next to the green cabinets (the shelf facing you).
 
-![The MATE ROV shelf with the components labeled](images/setup_manual_2026/mate_rov_shelf.png)
+![The MATE ROV shelf with the components labeled](images/setup_manual/mate_rov_shelf.png)
 
 ### MATE ROV Robot Table
 
 When you walk into the bay, turn left, and you will run into it.
 
-![The MATE ROV robot table with the components labeled](images/setup_manual_2026/mate_rov_robot%20_table.png)
+![The MATE ROV robot table with the components labeled](images/setup_manual/mate_rov_robot%20_table.png)
 
 ### Computer Shelf
 
 When you walk into the bay, this is the shelf immediately on the right.
 
-![The computer shelf with the components labeled](images/setup_manual_2026/computer_shelf.png)
+![The computer shelf with the components labeled](images/setup_manual/computer_shelf.png)
 
 ### Components List
 
@@ -43,16 +43,16 @@ When you walk into the bay, this is the shelf immediately on the right.
 | --- | --- | --- | --- |
 | 1 | Control Box | MATE ROV Shelf | |
 | 2 | Small Backup Power Supply | MATE ROV Shelf | |
-| 3 | Power Cord Extension (Blue Connector Cords) | MATE ROV Shelf | |
-| 4 | Big Gray IEC Cable | MATE ROV Shelf | |
+| 3 | Power Cord Extension (Blue Connector Cords) | MATE ROV Shelf | ![Power Cord Extension](images/setup_manual/power_extension.JPG) |
+| 4 | Big Gray IEC Cable | MATE ROV Shelf | ![Big Gray IEC Cable](images/setup_manual/large_iec_cable.JPG) |
 | 5 | Main Power Supply | MATE ROV Shelf | |
 | 6 | Robot | MATE ROV Robot table | |
 | 7 | Air Compressor | MATE ROV Robot table | |
 | 8 | Yellow Extension Cord | MATE ROV Robot table | |
-| 9 | Dell Competition Laptop (the laptop that is gray and thick) | Computer Shelf | |
-| 10 | Pilot Controller | Computer Shelf | |
-| 11 | IEC Cable (black cable) | Computer Shelf | |
-| Not Pictured above | IEC Cable (black cable) | Inside the Control Box | |
+| 9 | Dell Competition Laptop (the laptop that is gray and thick) | Computer Shelf | ![Competition Laptop](images/setup_manual/competition_laptop.JPG) |
+| 10 | Pilot Controller | Computer Shelf | ![Controller](images/setup_manual/controller.JPG) |
+| 11 | IEC Cable (black cable) | Computer Shelf | ![Black IEC Cable](images/setup_manual/black_iec_cable.JPG) |
+| Not Pictured above | IEC Cable (black cable) | Inside the Control Box | ![Black IEC Cable](images/setup_manual/black_iec_cable.JPG) |
 | Not Pictured above | Power Strip | On one of the work tables | |
 
 You only need one of the power supplies. If you use the Main Power Supply, you need the Gray Cable. If you use the Backup Power Supply, you need a total of 2 IEC Cables (black cables)
@@ -61,7 +61,7 @@ You only need one of the power supplies. If you use the Main Power Supply, you n
 
 ### Control Box
 
-![ The inside of the control box ]()
+![ The inside of the control box ](images/setup_manual/initial_control_box.JPG)
 
 **Note:** The three wires sticking up out of the box are normally inside the box. You need to fish them out of the box.
 
@@ -69,7 +69,7 @@ You only need one of the power supplies. If you use the Main Power Supply, you n
 
 2. Arrange control box and whichever power supply you are using with the power supply to the left of the control box.
 
-![ The power supply to the left of the control box ]()
+![ The power supply to the left of the control box ](images/setup_manual/control_box_power_supply_unplugged.JPG)
 
 3. Connect the power cord extension (component 3) to the power supply. Attach the cord with the fuse (the black box on the cord) towards the power supply. The blue connectors can be hard to fully connect, make sure to apply enough pressure that they click together.
 
@@ -87,7 +87,7 @@ You only need one of the power supplies. If you use the Main Power Supply, you n
 
 At this point your set up should look like below:
 
-![ Power supply connected to the control box and power ]()
+![ Power supply connected to the control box and power ](images/setup_manual/control_box_power_supply_plugged_in.JPG)
 
 6. Blug the leftmost black USB-c connector coming from the control box into the bonitor. The cord will need to go through the hole in the side of the control box that is covered in gray tape. Note: there are multiple ports in that area of the monitor, if the cord is not wanting to plug in, make sure you are attempting to plug into one of the USB-c ports because some of the port look similar.
 
@@ -95,7 +95,7 @@ At this point your set up should look like below:
 
 At this point you should have the following set up:
 
-![ Power supply and control box with the control box connected to power and the monitor plugged in ]()
+![ Power supply and control box with the control box connected to power and the monitor plugged in ](images/setup_manual/control_box_monitor_iec.JPG)
 
 8. Plug the USB-c cord that is in the center of the control box into the white router (the white thing with the googley eyes). The port is on the top of the router on the lefthand side, it says power above the port.
 
@@ -103,7 +103,7 @@ At this point you should have the following set up:
 
 At this point you should have the following:
 
-![ Control box with the router plugged in to power and ethernet ]()
+![ Control box with the router plugged in to power and ethernet ](images/setup_manual/control_box_router.JPG)
 
 10. Plug the controller (component 10) in. You can plug it directly into the right-hand side of the laptop, or into the USB port on the righthand side of the control box. If the controller is missing a cord, it takes a USB-c data cable.
 
@@ -113,7 +113,7 @@ At this point you should have the following:
 
 The setup should now look like this:
 
-![ The power supply, control box, and laptop setup ]()
+![ The power supply, control box, and laptop setup ](images/setup_manual/control_box_done.JPG)
 
 If you are using the pnuematics, proceed to [Setting up pnuematics](#setting-up-pnuematics), otherwise proceed to [Connecting the robot](#connecting-the-robot)
 
@@ -157,9 +157,9 @@ If you are using the pnuematics, proceed to [Setting up pnuematics](#setting-up-
 
 5. If using pnuematics, connect the pnuematics tube. To do so, insert the pnuematics tube into the connector on the control box. The connector looks like a circle on the right-hand side of the control box and is imediately below where the robot's power cord connects.
 
-The control box should look like the following:
+The control box should look like the following (photo does not include pnuematics):
 
-![ The control box with the cords from the robot plugged in ]()
+![ The control box with the cords from the robot plugged in ](images/setup_manual/robot_power_ethernet.JPG)
 
 ### Turn Everything On
 
