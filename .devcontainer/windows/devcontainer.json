@@ -1,6 +1,6 @@
 {
     "name" : "ROV Windows",
-    "image": "ghcr.io/cwrubotix/rov-25:jazzy",
+    "image": "ghcr.io/cwrubotix/rov-27:lyrical",
     "containerEnv": {
         "DISPLAY": "${localEnv:DISPLAY}"
     },
