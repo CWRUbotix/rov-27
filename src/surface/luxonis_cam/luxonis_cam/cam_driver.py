@@ -121,7 +121,7 @@ class FramePublishers:
         self.publishers = {topic: self.make_frame_publisher(topic) for topic in StreamTopic}
         self.bridge = CvBridge()
 
-    def make_frame_publisher(self, topic: StreamTopic) -> Publisher:
+    def make_frame_publisher(self, topic: StreamTopic) -> Publisher[Image]:
         """
         Create a publisher for the specified topic.
 
@@ -461,7 +461,7 @@ while True:
         except RuntimeError as e:
             self.missed_sends += 1
             self.get_logger().warning('Missed a dual cam spin')
-            self.get_logger().warning(e)
+            self.get_logger().warning(str(e))
 
         if self.missed_sends >= MISSED_SENDS_RESET_THRESHOLD:
             self.get_logger().error(

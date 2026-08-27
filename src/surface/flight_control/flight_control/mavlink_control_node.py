@@ -472,7 +472,7 @@ class MavlinkManualControlNode(Node):
             with Path.open(self.param_path) as f:
                 lines = f.readlines()
         except FileNotFoundError:
-            self.get_logger().warn('Could not load params file')
+            self.get_logger().warning('Could not load params file')
 
         for line in lines:
             stripped_line = line.strip()
