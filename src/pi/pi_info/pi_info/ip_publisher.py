@@ -28,7 +28,7 @@ class IPPublisher(Node):
             self.failed_ethernet = False
         except OSError:
             if not self.failed_ethernet:
-                self.get_logger().warn('No ethernet IP address found.')
+                self.get_logger().warning('No ethernet IP address found.')
             self.failed_ethernet = True
 
         try:
@@ -36,7 +36,7 @@ class IPPublisher(Node):
             self.failed_wireless = False
         except OSError:
             if not self.failed_wireless:
-                self.get_logger().warn('No wireless IP address found.')
+                self.get_logger().warning('No wireless IP address found.')
             self.failed_wireless = True
 
         self.publisher.publish(msg)

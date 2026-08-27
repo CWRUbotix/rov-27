@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add /opt/ros to .profile because of venv-ardupilot
-ROS_LINE="source /opt/ros/jazzy/setup.bash"
+ROS_LINE="source /opt/ros/lyrical/setup.bash"
 if ! grep -qF "$ROS_LINE" ~/.profile ;
     then echo "$ROS_LINE" >> ~/.profile ;
 fi

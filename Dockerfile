@@ -1,6 +1,6 @@
-FROM osrf/ros:jazzy-desktop
+FROM osrf/ros:lyrical-desktop
 
-ENV ROS_DISTRO jazzy
+ENV ROS_DISTRO lyrical
 ENV USER_NAME root
 
 RUN apt-get update -y \

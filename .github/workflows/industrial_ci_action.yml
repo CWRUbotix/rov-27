@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false # uncomment if failing jobs should not cancel the others immediately
       matrix: # matrix is the product of entries
-        ROS_DISTRO: [jazzy]
+        ROS_DISTRO: [lyrical]
         ROS_REPO: [main]
         # exclude: # specific configuration can be excludes
         #   - {ROS_DISTRO: melodic, ROS_REPO: testing}
@@ -40,7 +40,7 @@ jobs:
       # Once a :jazzy exists we can remove this section
       - uses: 'ros-industrial/industrial_ci@master' # run industrial_ci
         env: # either pass all entries explicitly
-          DOCKER_IMAGE: ghcr.io/cwrubotix/rov-26:${{matrix.ROS_DISTRO}}
+          DOCKER_IMAGE: ghcr.io/cwrubotix/rov-27:${{matrix.ROS_DISTRO}}
           ROS_DISTRO: ${{ matrix.ROS_DISTRO }}
           ROS_REPO: ${{ matrix.ROS_REPO }}
           BEFORE_INSTALL_TARGET_DEPENDENCIES_EMBED: './.vscode/install_dependencies.sh'

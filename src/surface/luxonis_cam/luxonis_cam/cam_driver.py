@@ -121,7 +121,7 @@ class FramePublishers:
         self.publishers = {topic: self.make_frame_publisher(topic) for topic in StreamTopic}
         self.bridge = CvBridge()
 
-    def make_frame_publisher(self, topic: StreamTopic) -> Publisher:
+    def make_frame_publisher(self, topic: StreamTopic) -> Publisher[Image]:
         """
         Create a publisher for the specified topic.
 
@@ -156,7 +156,7 @@ class FramePublishers:
 
         # Type narrow to make mypy happy
         if not isinstance(video_frame, depthai.ImgFrame):
-            self.node.get_logger().warn('Dequeued something other than an image frame, skipping')
+            self.node.get_logger().warning('Dequeued something other than an image frame, skipping')
             return
 
         time_msg = self.node.get_clock().now().to_msg()
@@ -249,7 +249,7 @@ class LuxonisCamDriverNode(Node):
                 focal_lengths_mm[i] = self.intrinsics[-1][0][0] * 3 / 1000
             self.get_logger().info(f'Focal lengths: {focal_lengths_mm}')
         except IndexError:
-            self.get_logger().warn('Unable to get Luxonis intrinsics. Did you calibrate?')
+            self.get_logger().warning('Unable to get Luxonis intrinsics. Did you calibrate?')
 
         self.frame_publishers = FramePublishers(self)
 
@@ -460,8 +460,8 @@ while True:
             self.missed_sends = 0
         except RuntimeError as e:
             self.missed_sends += 1
-            self.get_logger().warn('Missed a dual cam spin')
-            self.get_logger().warn(e)
+            self.get_logger().warning('Missed a dual cam spin')
+            self.get_logger().warning(str(e))
 
         if self.missed_sends >= MISSED_SENDS_RESET_THRESHOLD:
             self.get_logger().error(
