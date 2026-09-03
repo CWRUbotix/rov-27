@@ -25,11 +25,11 @@ sudo apt-get install ros-dev-tools -y
 sudo apt-get install python3-pip -y
 
 # Install ROS2
-sudo apt-get install ros-jazzy-ros-base -y
+sudo apt-get install ros-lyrical-ros-base -y
 sudo apt-get upgrade -y
 
 # Add setup.bash to .bashrc only if it isn't already there
-ROS_LINE='source /opt/ros/jazzy/setup.bash'
+ROS_LINE='source /opt/ros/lyrical/setup.bash'
 if ! grep -qF "$ROS_LINE" ~/.bashrc ;
     then echo "$ROS_LINE" >> ~/.bashrc ;
 fi
@@ -50,7 +50,7 @@ source ~/.bashrc
 
 # Install only Pi dependencies
 # Installs ROS dependencies
-source /opt/ros/jazzy/setup.sh && export PIP_BREAK_SYSTEM_PACKAGES=1 && rosdep install --from-paths src/pi --ignore-src -r -y
+source /opt/ros/lyrical/setup.sh && export PIP_BREAK_SYSTEM_PACKAGES=1 && rosdep install --from-paths src/pi --ignore-src -r -y
 
 # Add setup.bash to .bashrc
 source "$(pwd)/.vscode/rov_setup.sh"

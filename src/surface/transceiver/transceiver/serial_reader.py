@@ -51,7 +51,7 @@ class SerialReader(Node):
                 self.serial = Serial('/dev/serial/by-id/usb-Adafruit_Feather_32u4-if00', 115200)
                 break
             except SerialException:
-                self.get_logger().warn('Could not get serial device')
+                self.get_logger().warning('Could not get serial device')
                 time.sleep(5)
 
         Thread(target=self.read_serial, daemon=True, name='Serial Reader').start()

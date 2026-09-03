@@ -22,7 +22,9 @@ setup(
     maintainer_email='noah@mollerstuen.com',
     description='Driver for Luxonis stereo camera',
     license='Apache License 2.0',
-    tests_require=['pytest'],
+    extras_require={
+        'test': ['pytest'],
+    },
     entry_points={
         'console_scripts': ['luxonis_cam_driver = luxonis_cam.cam_driver:main'],
     },

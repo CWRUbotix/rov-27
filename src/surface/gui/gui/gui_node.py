@@ -46,7 +46,7 @@ class GUINode(Node):
         topic: str,
         signal: pyqtBoundSignal,
         qos_profile: QoSProfile = qos_profile_default,
-    ) -> Subscription:
+    ) -> Subscription[MsgType]:
         """Create a subscription that emits messages to the given signal.
         See rclpy.node.Node.create_subcription for creating subscriptions
             based on callback methods instead of signals.
@@ -77,7 +77,7 @@ class GUINode(Node):
     # else set to float number of seconds to limit request spinning
     def create_client_multithreaded(
         self, srv_type: type[SrvType], srv_name: str, timeout: float | None = 10.0
-    ) -> Client:
+    ) -> Client[SrvType]:
         """Create a service client.
         On another thread, print warnings until it connects.
 
