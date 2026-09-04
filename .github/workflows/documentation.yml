@@ -8,6 +8,9 @@ on:
       - "documentation/**"
   workflow_dispatch:
 
+permissions: 
+  contents: write
+
 env:
   GIT_AUTHOR_NAME: Actionbot
   GIT_AUTHOR_EMAIL: actions@github.com
@@ -15,6 +18,8 @@ env:
 jobs:
   job-sync-docs-to-wiki:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
