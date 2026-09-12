@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Launch ROS App
+Comment=Runs my ROS launch shell script
+Exec= bash --rcfile "/home/rov/launch.sh"
+Icon=/home/rov/Pictures/CWRUbotix_logo_icon.png
+Terminal=true
