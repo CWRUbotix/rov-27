@@ -103,9 +103,9 @@ class GUINode(Node):
         ).start()
         return cli
 
-    def __connect_to_service[SrvRequestType: BaseMessage, SrvResponseType: BaseMessage](self,
-                    client: Client[SrvRequestType, SrvResponseType],
-                    timeout: float) -> None:
+    def __connect_to_service[SrvRequestType: BaseMessage, SrvResponseType: BaseMessage](
+        self, client: Client[SrvRequestType, SrvResponseType], timeout: float
+    ) -> None:
         """Print warnings until the given client connects (blocking).
 
         Parameters
@@ -122,8 +122,10 @@ class GUINode(Node):
             )
 
     def send_request_multithreaded[SrvRequestType: BaseMessage, SrvResponseType: BaseMessage](
-        self, client: Client[SrvRequestType, SrvResponseType],
-        request: SrvRequestType, signal: pyqtBoundSignal | None = None
+        self,
+        client: Client[SrvRequestType, SrvResponseType],
+        request: SrvRequestType,
+        signal: pyqtBoundSignal | None = None,
     ) -> None:
         """Send a request from the given client on a separate thread.
         Emit the result to the given signal.
