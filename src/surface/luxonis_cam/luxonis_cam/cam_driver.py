@@ -455,6 +455,7 @@ while True:
                 buf.setData(
                     np.array([1 if self.stream_metas[cam_id].enabled else 0], dtype=np.uint8)
                 )
+
                 toggle_queue.send(buf)
 
             self.missed_sends = 0
