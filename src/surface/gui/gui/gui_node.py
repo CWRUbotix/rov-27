@@ -1,11 +1,11 @@
 from threading import Thread
 
 from PyQt6.QtCore import pyqtBoundSignal
-from rclpy.client import Client, SrvType, SrvTypeRequest
+from rclpy.client import Client
 from rclpy.node import Node
-from rclpy.publisher import MsgType
 from rclpy.qos import QoSProfile, qos_profile_default
 from rclpy.subscription import Subscription
+from rosidl_pycommon.interface_base_classes import BaseMessage, BaseService
 
 
 class GUINode(Node):
@@ -39,8 +39,7 @@ class GUINode(Node):
         if name:
             super().__init__(name)
 
-    # TODO: update sub to be generic in release after Jazzy
-    def create_signal_subscription(
+    def create_signal_subscription[MsgType: BaseMessage](
         self,
         msg_type: type[MsgType],
         topic: str,
@@ -75,9 +74,9 @@ class GUINode(Node):
 
     # Set to None for no timeout limits on service requests
     # else set to float number of seconds to limit request spinning
-    def create_client_multithreaded(
+    def create_client_multithreaded[SrvType: BaseService](
         self, srv_type: type[SrvType], srv_name: str, timeout: float | None = 10.0
-    ) -> Client[SrvType]:
+    ) -> Client[BaseMessage, BaseMessage]:
         """Create a service client.
         On another thread, print warnings until it connects.
 
@@ -104,7 +103,9 @@ class GUINode(Node):
         ).start()
         return cli
 
-    def __connect_to_service(self, client: Client, timeout: float) -> None:
+    def __connect_to_service[SrvRequestType: BaseMessage, SrvResponseType: BaseMessage](
+        self, client: Client[SrvRequestType, SrvResponseType], timeout: float
+    ) -> None:
         """Print warnings until the given client connects (blocking).
 
         Parameters
@@ -120,8 +121,11 @@ class GUINode(Node):
                 f' {client.srv_name} unavailable, waiting again...'
             )
 
-    def send_request_multithreaded(
-        self, client: Client, request: SrvTypeRequest, signal: pyqtBoundSignal | None = None
+    def send_request_multithreaded[SrvRequestType: BaseMessage, SrvResponseType: BaseMessage](
+        self,
+        client: Client[SrvRequestType, SrvResponseType],
+        request: SrvRequestType,
+        signal: pyqtBoundSignal | None = None,
     ) -> None:
         """Send a request from the given client on a separate thread.
         Emit the result to the given signal.
@@ -136,8 +140,8 @@ class GUINode(Node):
             The signal to emit the result to
         """
 
-        def wrapper(request: SrvTypeRequest) -> None:
-            response: SrvTypeRequest | None = client.call(request)
+        def wrapper(request: SrvRequestType) -> None:
+            response: SrvResponseType | None = client.call(request)
             if signal is not None:
                 signal.emit(response)
 
