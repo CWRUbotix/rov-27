@@ -55,7 +55,7 @@ If you've never contributed to a git repository before on this laptop or environ
 
 After cloning the repository, build the workspace and install the dependencies.
 
-- If you haven't set up the surface environment yet, go back to [Setup Surface Environment](#setup-surface-environment) and run the install script . 
+- If you haven't set up the surface environment yet, go back to [Setup Surface Environment](#setup-surface-environment) and run the install script. You then don't have to install the dependencies below.
 
 - Press `F1` or `ctrl` `shift` `p`, choose `Tasks: Run Task`, then choose `[ROS] 🏃‍ Install Dependencies & Build Workspace`
 
