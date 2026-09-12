@@ -54,6 +54,9 @@ git clone --recurse-submodules git@github.com:CWRUbotix/rov-27.git
 If you've never contributed to a git repository before on this laptop or environment, you might receive an error message saying you don't have access. In that case visit [this tutorial](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh) to set up SSH for local GitHub access.
 
 After cloning the repository, build the workspace and install the dependencies.
+
+- If you haven't set up the surface environment yet, go back to [Setup Surface Environment](#setup-surface-environment) and run the install script . 
+
 - Press `F1` or `ctrl` `shift` `p`, choose `Tasks: Run Task`, then choose `[ROS] 🏃‍ Install Dependencies & Build Workspace`
 
 ## Run Our Code
@@ -234,7 +237,7 @@ We need to set up our IDE: VSCode. If you already have it, great. Otherwise foll
 ### Setup Surface Environment
 Before this step, please follow the instructions to [Clone the Repository](#clone-the-repository) if you haven't yet, then return to this step to finish the first time setup.
 
-To run the install script, open the repository with VSCode. Then use `F1` or `ctrl+shift+p` to open the command bar and select `Tasks: Run Task`. Then from the Task selection choose `[SETUP] Surface Environment`. This will install ROS and all our dependencies.
+To run the install script, open the repository with VSCode. Then use `F1` or `ctrl+shift+p` to open the command bar and select `Tasks: Run Task`. Then from the Task selection choose `[SETUP] Surface Computer Environment`. This will install ROS and all our dependencies.
 
 ### Test Your Environment
 
