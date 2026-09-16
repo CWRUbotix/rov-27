@@ -77,16 +77,17 @@ class GUINode(Node):
     def create_client_multithreaded[
         SrvRequestType: BaseMessage,
         SrvResponseType: BaseMessage,
-        SrvType: BaseService[SrvRequestType, SrvResponseType],
     ](
-        self, srv_type: type[SrvType], srv_name: str, timeout: float | None = 10.0
+        self, srv_type: type[BaseService[SrvRequestType, SrvResponseType]],
+        srv_name: str,
+        timeout: float | None = 10.0
     ) -> Client[SrvRequestType, SrvResponseType]:
         """Create a service client.
         On another thread, print warnings until it connects.
 
         Parameters
         ----------
-        srv_type : type[SrvType]
+        srv_type : type[BaseService[SrvRequestType, SrvResponseType]
             The service message type
         srv_name : str
             The topic name for this service
@@ -95,7 +96,7 @@ class GUINode(Node):
 
         Returns
         -------
-        Client
+        Client[SrvRequestType, SrvResponseType]
             The created Client
         """
         cli = super().create_client(srv_type, srv_name)
