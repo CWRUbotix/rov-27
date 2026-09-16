@@ -1,4 +1,4 @@
-from PyQt6.QtCore import Qt, pyqtSignal, pyqtSlot
+from PyQt6.QtCore import pyqtSignal
 from PyQt6.QtWidgets import QHBoxLayout, QTabWidget, QVBoxLayout, QWidget
 
 from gui.app import App
@@ -10,7 +10,6 @@ from gui.widgets.logger import Logger
 from gui.widgets.tabs.general_debug_tab import GeneralDebugTab
 from gui.widgets.temperature import TemperatureSensor
 from gui.widgets.timer import InteractiveTimer
-
 
 
 class OperatorApp(App):
@@ -55,9 +54,6 @@ class OperatorApp(App):
         self.tabs.currentChanged.connect(self.changed_tabs)
         root_layout.addWidget(self.tabs)
 
-
-
-        
 
 def run_gui_operator() -> None:
     OperatorApp().run_gui()
