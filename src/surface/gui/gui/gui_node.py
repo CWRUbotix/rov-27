@@ -78,9 +78,10 @@ class GUINode(Node):
         SrvRequestType: BaseMessage,
         SrvResponseType: BaseMessage,
     ](
-        self, srv_type: type[BaseService[SrvRequestType, SrvResponseType]],
+        self,
+        srv_type: type[BaseService[SrvRequestType, SrvResponseType]],
         srv_name: str,
-        timeout: float | None = 10.0
+        timeout: float | None = 10.0,
     ) -> Client[SrvRequestType, SrvResponseType]:
         """Create a service client.
         On another thread, print warnings until it connects.
