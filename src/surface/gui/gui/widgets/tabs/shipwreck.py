@@ -184,7 +184,7 @@ class ShipwreckTab(QWidget):
                     ),
                 ),
                 'switch_rect_stream',
-                label=ClickableLabel(self.click_left_signal)
+                label=ClickableLabel(self.click_left_signal),
             ),
             Eye.RIGHT: SwitchableVideoWidget(
                 (
