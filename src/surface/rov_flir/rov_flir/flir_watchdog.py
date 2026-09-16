@@ -104,7 +104,10 @@ class Watchdog:
         if self.process.stdout is None:
             raise RuntimeError('Child process has no stdout')
 
-        return self.process.stdout.readline()
+        if self.process.stdout:
+            return self.process.stdout.readline()
+
+        return b''
 
     def poll(self) -> None:
         """Actively keep the process alive if should_be_alive is set."""
