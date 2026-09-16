@@ -4,6 +4,7 @@ import re
 import subprocess
 from signal import SIGINT
 from subprocess import Popen, TimeoutExpired
+from typing import IO
 
 import rclpy
 from rclpy.executors import MultiThreadedExecutor
@@ -105,7 +106,8 @@ class Watchdog:
             raise RuntimeError('Child process has no stdout')
 
         if self.process.stdout:
-            return self.process.stdout.readline()
+            stdout: IO[bytes] = self.process.stdout
+            return stdout.readline()
 
         return b''
 
