@@ -74,8 +74,11 @@ class GUINode(Node):
 
     # Set to None for no timeout limits on service requests
     # else set to float number of seconds to limit request spinning
-    def create_client_multithreaded[SrvRequestType:BaseMessage, SrvResponseType: BaseMessage,
-        SrvType: BaseService[SrvRequestType, SrvResponseType]](
+    def create_client_multithreaded[
+        SrvRequestType: BaseMessage,
+        SrvResponseType: BaseMessage,
+        SrvType: BaseService[SrvRequestType, SrvResponseType],
+    ](
         self, srv_type: type[SrvType], srv_name: str, timeout: float | None = 10.0
     ) -> Client[SrvRequestType, SrvResponseType]:
         """Create a service client.
