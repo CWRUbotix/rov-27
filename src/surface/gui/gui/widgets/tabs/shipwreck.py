@@ -184,7 +184,7 @@ class ShipwreckTab(QWidget):
                     ),
                 ),
                 'switch_rect_stream',
-                make_label=lambda: ClickableLabel(self.click_left_signal),
+                label=ClickableLabel(self.click_left_signal)
             ),
             Eye.RIGHT: SwitchableVideoWidget(
                 (
@@ -205,7 +205,7 @@ class ShipwreckTab(QWidget):
                     ),
                 ),
                 'switch_rect_stream',
-                make_label=lambda: ClickableLabel(self.click_right_signal),
+                label=ClickableLabel(self.click_right_signal),
             ),
         }
 
