@@ -1,7 +1,7 @@
-# MATE ROV 2025-26
+# MATE ROV 2026-27
 
-[![Continuous Integration](https://github.com/CWRUbotix/rov-26/actions/workflows/industrial_ci_action.yml/badge.svg)](https://github.com/CWRUbotix/rov-26/actions/workflows/industrial_ci_action.yml)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/CWRUbotix/rov-26/main.svg)](https://results.pre-commit.ci/latest/github/CWRUbotix/rov-26/main)
+[![Continuous Integration](https://github.com/CWRUbotix/rov-27/actions/workflows/industrial_ci_action.yml/badge.svg)](https://github.com/CWRUbotix/rov-27/actions/workflows/industrial_ci_action.yml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/CWRUbotix/rov-27/main.svg)](https://results.pre-commit.ci/latest/github/CWRUbotix/rov-27/main)
 [![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
@@ -12,7 +12,7 @@
     3. [First Time Setup](#first-time-setup)
         1. [Get Ubuntu](#get-ubuntu)
             1. [Linux](#linux)
-                1. [Bare Metal](#bare-metal-ubuntu-24-only)
+                1. [Bare Metal](#bare-metal-ubuntu-26-only)
                 2. [Docker](#docker-all-distros-probably)
             2. [Windows](#windows)
                 1. [Dual Boot](#dual-boot)
@@ -43,7 +43,7 @@ If you have GitHub Desktop, click the green `Code` button above, then `Open with
 If you have the Git CLI, start by opening up a terminal, navigating to where you want the code to be saved, and entering the following command:
 
 ```bash
-git clone --recurse-submodules git@github.com:CWRUbotix/rov-26.git
+git clone --recurse-submodules git@github.com:CWRUbotix/rov-27.git
 ```
 
 > For already cloned repos, make sure you download submodules:
@@ -78,14 +78,14 @@ ros2 launch surface_main surface_all_nodes_launch.py
 
 ## First Time Setup
 ### Get Ubuntu
-To run our code, you need an environment with Ubuntu 24. Select the guide below that fits your operating system. Some operating systems have multiple options. Here are our recommended installation options:
+To run our code, you need an environment with Ubuntu 26. Select the guide below that fits your operating system. Some operating systems have multiple options. Here are our recommended installation options:
  - **[Linux](#linux)**: If you have the latest Ubuntu LTS, use the Bare Metal installation. Otherwise you'll need to do the Docker install.
  - **[Windows](#windows)**: You should create a dual boot, then follow the Linux instructions for your new Ubuntu OS. Otherwise, we recommend using WSL, although Docker has similar capabilities.
  - **[MacOS](#macos)**: We recommend using Docker. UTM should theoretically have more capabilities than Docker, but it has a long setup time and we're not sure it works.
 
 #### Linux
 
-##### Bare Metal (Ubuntu 24 only)
+##### Bare Metal (Ubuntu 26 only)
 
 You can continue to [Setup IDE](#setup-ide)
 
@@ -105,7 +105,7 @@ To open the container, open the repository with VSCode. Then use `F1` or `ctrl+s
 
 Now you should be in your Docker container in VSCode.
 
-To reopen the container after you close it, go to `File` > `Open Recent` > `/stuff/rov-26 [Dev Container]`
+To reopen the container after you close it, go to `File` > `Open Recent` > `/stuff/rov-27 [Dev Container]`
 
 For gui apps run `xhost + local:docker` before launching docker or add to `.bashrc`.
 
@@ -115,21 +115,21 @@ For gui apps run `xhost + local:docker` before launching docker or add to `.bash
 
 Creating a dual boot allows you to install two different operating systems to your device. You can then switch between them when your computer boots. Once you have a dual boot set up, this is by far the easiest and most error-free option. You'll also find that many CS courses are easier once you have easy access to a full Linux OS.
 
-[This is a guide](https://www.tomshardware.com/how-to/dual-boot-linux-and-windows-11#how-to-install-linux-for-dual-boot-3) for creating a dual boot. Note that there a bootable USB drives available in the bay for Ubuntu 24.04, so you can skip to the "How to Install Linux for Dual Boot" section.
+[This is a guide](https://www.tomshardware.com/how-to/dual-boot-linux-and-windows-11#how-to-install-linux-for-dual-boot-3) for creating a dual boot. Note that there a bootable USB drives available in the bay for Ubuntu 26.04, so you can skip to the "How to Install Linux for Dual Boot" section.
 
-You might need to [disable secure boot](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11), but try without doing that first. If you get secure boot errors later in the installation, that might be because you chose to [install third party drivers](https://askubuntu.com/questions/1513173/do-i-need-to-disable-secure-boot-to-install-ubuntu-24-04).
+You might need to [disable secure boot](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/disabling-secure-boot?view=windows-11), but try without doing that first. If you get secure boot errors later in the installation, that might be because you chose to [install third party drivers](https://askubuntu.com/questions/1513173/do-i-need-to-disable-secure-boot-to-install-ubuntu-26-04).
 
 ##### WSL
 
 Follow [this](https://learn.microsoft.com/en-us/windows/wsl/install) guide to install WSL.
 
-You need to download Ubuntu 24, so you should run the following command to change the linux distribution that is installed.
+You need to download Ubuntu 26, so you should run the following command to change the linux distribution that is installed.
 
 ```bash
-wsl.exe --install Ubuntu-24.04
+wsl.exe --install Ubuntu-26.04
 ```
 
-After WSL has been installed follow [this](https://code.visualstudio.com/docs/remote/wsl) guide to get VSCode and WSL to properly communicate and navigate to the rov-26 folder.
+After WSL has been installed follow [this](https://code.visualstudio.com/docs/remote/wsl) guide to get VSCode and WSL to properly communicate and navigate to the rov-27 folder.
 
 ##### Docker
 
@@ -143,7 +143,7 @@ To open the container, open the repository with VSCode. Then use `F1` or `ctrl+s
 
 Now you should be in your Docker container in VSCode.
 
-To reopen the container after you close it, go to `File` > `Open Recent` > `/stuff/rov-26 [Dev Container]`
+To reopen the container after you close it, go to `File` > `Open Recent` > `/stuff/rov-27 [Dev Container]`
 
 To add your Git SSH keys into the container follow [this](https://code.visualstudio.com/remote/advancedcontainers/sharing-git-credentials) guide.
 
@@ -196,7 +196,7 @@ To open the container, open our repository with VSCode. Then use `F1` or `comman
 
 Now you should be in your Docker container in VSCode.
 
-To reopen the container after you close it, go to `File` > `Open Recent` > `/stuff/rov-26 [Dev Container]`.
+To reopen the container after you close it, go to `File` > `Open Recent` > `/stuff/rov-27 [Dev Container]`.
 
 > Note for folks who eventually try running the simulation: XQuartz might not be able to support OpenGL applications like our simulation. [Apparently there's a flag](https://unix.stackexchange.com/questions/429760/opengl-rendering-with-x11-forwarding) to enable OpenGL rendering as late at XQuartz 2.7.11, but that version might be too old to run on your Mac.
 
@@ -209,14 +209,14 @@ To reopen the container after you close it, go to `File` > `Open Recent` > `/stu
 As mentioned in this [StackExchange](https://apple.stackexchange.com/questions/434799/utm-ubuntu-linux-installation-says-network-is-unreachable?rq=1), if you have issues getting a network connection with either of these options, try changing the network mode of your virtual machine in its settings menu (the icon with sliders on the top right when the virtual machine is selected).
 
 If you have Apple silicon (an M1, M2, etc.):
- - Download a disk image of [Ubuntu 24.04 Server for ARM64](https://ubuntu.com/download/server/arm).
+ - Download a disk image of [Ubuntu 26.04 Server for ARM64](https://ubuntu.com/download/server/arm).
  - [This Youtube video](https://www.youtube.com/watch?v=JrNS3brSnmA) provides a good tutorial on what to do next.
      - At 3:20, the video says to enable hardware OpenGL acceleration. When testing, we've had issues with popup menus causing apps to fail to render, so it is probably safer to leave this unchecked.
  - After finishing the installation, if Ubuntu gets stuck while booting for a long time, follow the instructions from [UTM's guide](https://docs.getutm.app/guides/ubuntu/#black-screen-or-stuck-during-boot-for-a-long-period)
  - You'll probably run into issues with our packages being built for AMD64 instead of ARM64. This is an uninvestigated problem, but emulating AMD64 on ARM Macs is too slow to be feasible.
 
 If you have a different (i.e. Intel) CPU:
- - Download a disk image of [Ubuntu 24.04 Desktop for AMD64](https://ubuntu.com/download/desktop).
+ - Download a disk image of [Ubuntu 26.04 Desktop for AMD64](https://ubuntu.com/download/desktop).
  - Follow these instructions stolen from [UTM's guide](https://docs.getutm.app/guides/ubuntu/):
    - Open UTM and click the `+` button to open the VM creation wizard.
    - Select `Virtualize`.
@@ -336,4 +336,4 @@ rov_msgs, you'll need to run this every time you change something:
 ``` -->
 
 # Development on shared devices
-For competition/bay laptops, install [deploy keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys) for the necessary repos rather than using one random person's Github SSH keys. Our keys are stored in the private [rov-keys](https://github.com/CWRUbotix/rov-keys) repo. The settings for deploy keys for this repo are [here](https://github.com/CWRUbotix/rov-26/settings/keys).
+For competition/bay laptops, install [deploy keys](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys) for the necessary repos rather than using one random person's Github SSH keys. Our keys are stored in the private [rov-keys](https://github.com/CWRUbotix/rov-keys) repo. The settings for deploy keys for this repo are [here](https://github.com/CWRUbotix/rov-27/settings/keys).
