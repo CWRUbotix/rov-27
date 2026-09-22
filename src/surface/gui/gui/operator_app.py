@@ -21,7 +21,7 @@ class OperatorApp(App):
     def __init__(self) -> None:
         super().__init__('operator_gui_node')
 
-        self.setWindowTitle('Operator GUI - CWRUbotix ROV 2025')
+        self.setWindowTitle('Operator GUI - CWRUbotix ROV 2027')
 
         # Main tab
         main_tab = QWidget()
