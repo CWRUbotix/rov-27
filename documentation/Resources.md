@@ -1,4 +1,5 @@
-# ROS and Robot related Docs
+# ROS and Communication Protocal related Docs
+
 [ROS Lyrical Docs](https://docs.ros.org/en/lyrical/index.html)
 
 [Intro to ROS Geeks For Geeks](https://www.geeksforgeeks.org/operating-systems/introduction-to-ros-robot-operating-system/)
@@ -12,14 +13,16 @@
 
 
 # GUI related Docs
+
 [pyqt6 Docs](https://www.riverbankcomputing.com/static/Docs/PyQt6/)
 
-[pySide6 Docs](https://doc.qt.io/qtforpython-6/gettingstarted.html#getting-started)
+[pySide6 Docs](https://doc.qt.io/qtforpython-6/gettingstarted.html#getting-started) Note: This is techinically a different library than pyqt6 but often has the same syntax and has better explainations.
+
 
 
 # Python related Docs
 
-[python 3.14 Docs](https://docs.python.org/3/)
+[Python 3.14 Docs](https://docs.python.org/3/)
 
 [Intro to Python W3 schools](https://www.w3schools.com/python/)
 
@@ -29,8 +32,10 @@
 
 
 # Depth Camera Docs
+
 [DepthAI Docs](https://docs.luxonis.com/software-v3/depthai)
 
 
 # Github related Docs
-[github SSH Key Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+[Github SSH Key Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
