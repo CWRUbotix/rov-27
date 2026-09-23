@@ -11,7 +11,7 @@
 | git add \[file\] | stage a specific file to be able to commit it |
 | git commit \-m "\[message\]" | commit a file with a message |
 | git merge \[branch\] | merge the branch you are on with \[branch\] |
-| git clone \<url\> | cone a repo |
+| git clone \[url\] | clone a repo |
 | git diff \[file1\] \[file2\] | check the difference between \[file1\] and \[file2\] |
 | git push | push your code up to github |
 | git pull | pull code down from github |
