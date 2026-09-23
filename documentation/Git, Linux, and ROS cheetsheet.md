@@ -23,7 +23,7 @@
 | cd | change directory |
 | pwd | see your current location |
 | mkdir | make a directory |
-| mv \[file\] | move a file |
+| mv \[file\] \[location\] | move a file to a new location |
 | rm \[file\] | remove a file (be careful with this, you can't get it back) |
 | cat \[file\] | look at a file |
 | nano \[file\] | editing tool for files in cmd line |
