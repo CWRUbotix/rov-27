@@ -7,7 +7,7 @@
 | git checkout \-b \[new branch name\] | create a new branch |
 | git stash | stash away what you are working on on a branch (useful if you need to switch to a different branch without committing your code) |
 | git stash pop | "unstash" the last thing you stashed |
-| git add . | stages all your files to be able to commit them |
+| git add . | stages all your files to be able to commit them (Don't forget the ".", it is not a typo) |
 | git add \[file\] | stage a specific file to be able to commit it |
 | git commit \-m "\[message\]" | commit a file with a message |
 | git merge \[branch\] | merge the branch you are on with \[branch\] |
