@@ -3,7 +3,7 @@
 
 | Commands | Descriptions |
 | :---- | :---- |
-| git status | provides information about what branch you are on, what is staged, and some other useful information. \*If you forget where you are or what you are doing in git, git status is a good place to start to get back on track\*  |
+| git status | provides information about what branch you are on, what is staged, and some other useful information. If you forget where you are or what you are doing in git, git status is a good place to start to get back on track  |
 | git checkout \-b \[new branch name\] | create a new branch |
 | git stash | stash away what you are working on on a branch (useful if you need to switch to a different branch without committing your code) |
 | git stash pop | "unstash" the last thing you stashed |
