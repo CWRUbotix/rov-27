@@ -11,7 +11,7 @@
         "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
         "type=bind,source=/home/${localEnv:USER}/.gitconfig,target=/home/rov/.gitconfig,readonly"
     ],
-    "workspaceFolder": "/home/root/rov-25",
+    "workspaceFolder": "/home/root/rov-27",
     "customizations": {
         "vscode": {
             "extensions": [
