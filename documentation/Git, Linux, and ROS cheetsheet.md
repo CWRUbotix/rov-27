@@ -36,4 +36,4 @@
 | ros2 run \<package\_name\> \<executable\_name\> \<param\_name\>:=\<value\> | launch ROS code with parameters |
 | ros2 launch surface\_main surface\_all\_nodes\_launch.py | How to run our code |
 | rqt | Lets you see the running nodes and topics in a map |
-
+| ros2 topic echo \[topic\_name\] | Lets you see the messages published on a topic |
