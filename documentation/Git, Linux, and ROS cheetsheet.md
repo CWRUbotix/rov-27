@@ -9,7 +9,7 @@
 | git stash pop | "unstash" the last thing you stashed |
 | git add . | stages all your files to be able to commit them (Don't forget the ".", it is not a typo) |
 | git add \[file\] | stage a specific file to be able to commit it |
-| git commit \-m "\[message\]" | commit a file with a message |
+| git commit \-m "\[message\]" | commit all staged files with a message |
 | git merge \[branch\] | merge the branch you are on with \[branch\] |
 | git clone \[url\] | clone a repo |
 | git diff \[file1\] \[file2\] | check the difference between \[file1\] and \[file2\] |
