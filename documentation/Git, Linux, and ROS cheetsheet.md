@@ -1,7 +1,7 @@
 
 # Git Commands
 
-| Git Commands | Descriptions |
+| Commands | Descriptions |
 | :---- | :---- |
 | git status | provides information about what branch you are on, what is staged, and some other useful information. \*If you forget where you are or what you are doing in git, git status is a good place to start to get back on track\*  |
 | git checkout \-b \[new branch name\] | create a new branch |
