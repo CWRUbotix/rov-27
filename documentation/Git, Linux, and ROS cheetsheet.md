@@ -32,7 +32,9 @@
 | vim \[file\] | another editing tool for files in cmd line |
 | ps | look at processes running on your machine |
 
-| ROS Commands | Descriptions |
+# ROS Commands
+
+| Commands | Descriptions |
 | :---- | :---- |
 | ros2 launch \<package\_name\> \<executable\_name\> | launch ros code |
 | ros2 run \<package\_name\> \<executable\_name\> \<param\_name\>:=\<value\> | launch ROS code with parameters |
