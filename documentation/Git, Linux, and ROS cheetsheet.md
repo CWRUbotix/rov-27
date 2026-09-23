@@ -17,7 +17,9 @@
 | git pull | pull code down from github |
 | git log | look at your past commits |
 
-| Linux Commands | Descriptions |
+# Linux Commands
+
+| Commands | Descriptions |
 | :---- | :---- |
 | ls | list files and directories you have access to based on your current location |
 | cd | change directory |
