@@ -52,11 +52,6 @@ git clone --recurse-submodules git@github.com:CWRUbotix/rov-27.git
 
 If you've never contributed to a git repository before on this laptop or environment, you might receive an error message saying you don't have access. In that case visit [this tutorial](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh) to set up SSH for local GitHub access.
 
-After cloning the repository, build the workspace and install the dependencies.
-
-- If you haven't set up the surface environment yet, go back to [Setup Surface Environment](#setup-surface-environment) and run the install script. You then don't have to install the dependencies below.
-
-- Press `F1` or `ctrl` `shift` `p`, choose `Tasks: Run Task`, then choose `[ROS] 🏃‍ Install Dependencies & Build Workspace`
 
 ### Setup Surface Environment
 
