@@ -33,7 +33,7 @@
 | ROS Commands | Descriptions |
 | :---- | :---- |
 | ros2 launch \<package\_name\> \<executable\_name\> | launch ros code |
-| ros2 run \<package\_name\> \<executable\_name\> \--ros-args \-p \<param\_name\>:=\<value\> | launch rose code with parameters |
+| ros2 run \<package\_name\> \<executable\_name\> \<param\_name\>:=\<value\> | launch ROS code with parameters |
 | ros2 launch surface\_main surface\_all\_nodes\_launch.py | How to run our code |
 | rqt | Lets you see the running nodes and topics in a map |
 
