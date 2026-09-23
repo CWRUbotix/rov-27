@@ -39,7 +39,7 @@ COPY src/surface/rov_gazebo/scripts/ardupilot_gazebo.sh .
 RUN ./ardupilot_gazebo.sh \
     && rm ardupilot_gazebo.sh
 
-WORKDIR /home/${USER_NAME}/rov-25
+WORKDIR /home/${USER_NAME}/rov-27
 
 COPY . .
 
