@@ -8,6 +8,8 @@
 ## Table of Contents
 1. [Setup](#setup)
     1. [Clone the Repository](#clone-the-repository)
+        1. [Setup Surface Environment](#setup-surface-environment)
+        2. [Test Your Environment](#test-your-environment)
     2. [Run Our Code](#run-our-code)
     3. [First Time Setup](#first-time-setup)
         1. [Get Ubuntu](#get-ubuntu)
@@ -22,8 +24,6 @@
                 1. [Docker](#docker-1)
                 2. [UTM](#utm)
         2. [Setup IDE](#setup-ide)
-        3. [Setup Surface Environment](#setup-surface-environment)
-        4. [Test Your Environment](#test-your-environment)
     4. [Upgrading Environment](#upgrading-environment)
 2. [Structure](#structure)
     1. [Directory Structure](#directory-structure)
@@ -32,7 +32,6 @@
 3. [Axis Orientation](#axis-orientation)
 5. [Unit Tests](#unit-tests)
 6. [Development On Shared Devices](#development-on-shared-devices)
-
 
 # Setup
 If this is your first time cloning our repository on your laptop, please follow [First Time Setup](#first-time-setup).
@@ -53,8 +52,29 @@ git clone --recurse-submodules git@github.com:CWRUbotix/rov-27.git
 
 If you've never contributed to a git repository before on this laptop or environment, you might receive an error message saying you don't have access. In that case visit [this tutorial](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh) to set up SSH for local GitHub access.
 
-After cloning the repository, build the workspace and install the dependencies.
-- Press `F1` or `ctrl` `shift` `p`, choose `Tasks: Run Task`, then choose `[ROS] 🏃‍ Install Dependencies & Build Workspace`
+
+### Setup Surface Environment
+
+To run the install script, open the repository with VSCode. Then use `F1` or `ctrl+shift+p` to open the command bar and select `Tasks: Run Task`. Then from the Task selection choose `[SETUP] Surface Computer Environment`. This will install ROS and all our dependencies.
+
+### Test Your Environment
+
+After setting up your environment, open a terminal (make sure it's in VSCode if you're using Docker) and run an example publisher node:
+
+```bash
+ros2 run demo_nodes_cpp talker
+```
+
+Open a second terminal and run an example subscriber node:
+
+```bash
+ros2 run demo_nodes_py listener
+```
+
+If the listener receives the messages published by the talker, then ROS was successfully installed on your system.
+
+After this you should be ready to [Run Our Code](#run-our-code).
+
 
 ## Run Our Code
 
@@ -75,6 +95,7 @@ Then try launching our GUI:
 ```bash
 ros2 launch surface_main surface_all_nodes_launch.py
 ```
+
 
 ## First Time Setup
 ### Get Ubuntu
@@ -229,30 +250,7 @@ If you have a different (i.e. Intel) CPU:
    - Go through the Ubuntu installer. If the reboot fails, you can manually quit the VM, unmount the installer ISO, and start the VM again to boot into your new installation.
 
 ### Setup IDE
-We need to set up our IDE: VSCode. If you already have it, great. Otherwise follow [this](https://code.visualstudio.com/download) tutorial. We recommend installing the mypy and autoDocstring VSCode extensions. Our autoDocstring settings are `Docstring Format: Numpy` and `Start On New Line: Start docstring on new line`.
-
-### Setup Surface Environment
-Before this step, please follow the instructions to [Clone the Repository](#clone-the-repository) if you haven't yet, then return to this step to finish the first time setup.
-
-To run the install script, open the repository with VSCode. Then use `F1` or `ctrl+shift+p` to open the command bar and select `Tasks: Run Task`. Then from the Task selection choose `[SETUP] Surface Environment`. This will install ROS and all our dependencies.
-
-### Test Your Environment
-
-After setting up your environment, open a terminal (make sure it's in VSCode if you're using Docker) and run an example publisher node:
-
-```bash
-ros2 run demo_nodes_cpp talker
-```
-
-Open a second terminal and run an example subscriber node:
-
-```bash
-ros2 run demo_nodes_py listener
-```
-
-If the listener receives the messages published by the talker, then ROS was successfully installed on your system.
-
-After this you should be ready to [Run Our Code](#run-our-code).
+We need to set up our IDE: VSCode. If you already have it, great. Otherwise follow [this](https://code.visualstudio.com/download) tutorial. We recommend installing the mypy and autoDocstring VSCode extensions. Our autoDocstring settings are `Docstring Format: Numpy` and `Start On New Line: Start docstring on new line`. You can then clone the repo using the instructions in [Clone the Repository](#clone-the-repository).
 
 ## Upgrading Environment
 
