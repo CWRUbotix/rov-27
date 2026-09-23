@@ -285,24 +285,30 @@ Documentation will take place at 3 levels:
 - Inline Level - Using reST / Numpy Standard. To autogenerate in VSCode we use autoDocstring extension with the setting set to Numpy and auto docstring on new line. Below is an example of an inline function docstring.
 
 ```python
-def __init__(self, srv_type: SrvType, topic: str, signal: pyqtBoundSignal,
-                 timeout: float = 1.0, expected_namespace: str = '/surface/gui'):
-        """
-        _summary_
+def __init__(
+    self,
+    srv_type: SrvType,
+    topic: str,
+    signal: pyqtBoundSignal,
+    timeout: float = 1.0,
+    expected_namespace: str = '/surface/gui',
+):
+    """
+    _summary_
 
-        Parameters
-        ----------
-        srv_type : SrvType
-            _description_
-        topic : str
-            _description_
-        signal : pyqtBoundSignal
-            _description_
-        timeout : float, optional
-            _description_, by default 1.0
-        expected_namespace : str, optional
-            _description_, by default '/surface/gui'
-        """
+    Parameters
+    ----------
+    srv_type : SrvType
+        _description_
+    topic : str
+        _description_
+    signal : pyqtBoundSignal
+        _description_
+    timeout : float, optional
+        _description_, by default 1.0
+    expected_namespace : str, optional
+        _description_, by default '/surface/gui'
+    """
 ```
 
 # Axis Orientation
