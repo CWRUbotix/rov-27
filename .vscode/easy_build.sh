@@ -1,6 +1,6 @@
 # Done to suppress setup.py install deprecated warnings
 # Can be removed once ROS redoes their python build system
-PYTHONWARNINGS=ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources; export PYTHONWARNINGS
+export PYTHONWARNINGS="ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources,ignore:pkg_resources is deprecated as an API"
 
 . /opt/ros/lyrical/setup.sh
 

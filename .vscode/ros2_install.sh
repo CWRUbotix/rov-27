@@ -39,7 +39,7 @@ fi
 
 # Done to suppress setup.py install deprecated warnings
 # Can be removed once ROS redoes their python build system
-PYTHON_WARNINGS_LINE='PYTHONWARNINGS=ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources; export PYTHONWARNINGS'
+export PYTHONWARNINGS="ignore:::setuptools.command.install,ignore:::setuptools.command.easy_install,ignore:::pkg_resources,ignore:pkg_resources is deprecated as an API"
 if ! grep -qF "$PYTHON_WARNINGS_LINE" ~/.bashrc ;
     then echo "$PYTHON_WARNINGS_LINE" >> ~/.bashrc ;
 fi
