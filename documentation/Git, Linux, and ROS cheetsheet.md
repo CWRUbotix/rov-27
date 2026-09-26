@@ -58,6 +58,7 @@
 | nano \[file\] | editing tool for files in cmd line |
 | vim \[file\] | another editing tool for files in cmd line |
 | ps | look at processes running on your machine |
+| ctrl +c | kill what is running in the terminal |
 
 # ROS Commands
 
@@ -67,31 +68,5 @@
 | ros2 run \<package\_name\> \<executable\_name\> \<param\_name\>:=\<value\> | launch ROS code with parameters |
 | rqt | Lets you see the running nodes and topics in a map |
 | ros2 topic echo \[topic\_name\] | Lets you see the messages published on a topic |
-
-# Robot Development
-
-## Starting an issue
-
-| Commands | Descriptions |
-| :---- | :---- |
-| git checkout main | verify you are on main |
-| git checkout -b branch_name | create a new branch |
-
-## Running the code (run in this order):
-
-| Commands | Descriptions |
-| :---- | :---- |
-| ctrl+shift+b | Build code |
-| . install/setup.sh| Run install script |
-| ros2 launch surface\_main surface\_all\_nodes\_launch.py | Run our code |
-
-## Committing process
-
-| Commands | Descriptions |
-| :---- | :---- |
-| git status | check that you are on the right branch |
-| git add .| stage all your files |
-| git commit -m "commit message" | commit your code |
-| git push | push code up to repo |
 
 
