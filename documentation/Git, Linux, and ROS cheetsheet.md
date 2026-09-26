@@ -43,14 +43,14 @@
 
 # Robot Development
 
-## Starting an issue 
+## Starting an issue
 
 | Commands | Descriptions |
 | :---- | :---- |
 | git checkout main | verify you are on main |
 | git checkout -b branch_name | create a new branch |
 
-## Running the code (run in this order): 
+## Running the code (run in this order):
 
 | Commands | Descriptions |
 | :---- | :---- |
