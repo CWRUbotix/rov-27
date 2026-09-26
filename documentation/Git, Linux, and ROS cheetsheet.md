@@ -43,20 +43,20 @@
 
 # Robot Development
 
-## Starting an issue 
+## Starting an issue
 | Commands | Descriptions |
 | :---- | :---- |
 | git checkout main | verify you are on main |
 | git checkout -b branch_name | create a new branch |
 
-## Running the code (run in this order): 
+## Running the code (run in this order):
 | Commands | Descriptions |
 | :---- | :---- |
 | ctrl+shift+b | Build code |
 | . install/setup.sh| Run install script |
 | ros2 launch surface\_main surface\_all\_nodes\_launch.py | Run our code |
 
-## Committing process 
+## Committing process
 | Commands | Descriptions |
 | :---- | :---- |
 | git status | check that you are on the right branch |
