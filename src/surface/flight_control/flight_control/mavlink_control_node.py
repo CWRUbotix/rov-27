@@ -164,6 +164,23 @@ class MavlinkManualControlNode(Node):
 
         self.get_logger().info('Connecting to mavlink...')
         self.mavlink = mavutil.mavlink_connection(MAVLINK_CONNECTION_STRING, source_system=255)
+        print("IN HERE")
+        
+        LEAK = mavutil.mavlink.MAV_SYS_STATUS_SENSOR_LEAK
+        
+        while True:
+    msg = master.recv_match(type="SYS_STATUS", blocking=True)
+
+    if msg is None:
+        continue
+
+    present = msg.onboard_control_sensors_present
+    enabled = msg.onboard_control_sensors_enabled
+    health = msg.onboard_control_sensors_health
+
+    print("SYS_STATUS received")
+        
+        # connect thing and see what output it shows
 
         self.state_publisher = self.create_publisher(
             VehicleState, 'vehicle_state_event', qos_profile_system_default
