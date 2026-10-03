@@ -282,6 +282,12 @@ class LuxonisCamDriverNode(Node):
         else:
             response.success = False
 
+        #if request.cam in STREAMS_THAT_NEED_STEREO:
+        #    self.stream_metas[CAM_IDS.LUX_LEFT].enabled = request.on
+        #    self.stream_metas[CAM_IDS.LUX_RIGHT].enabled = request.on
+        #else:
+        #    response.success = False
+
         statuses = [f'{cam}: {meta.enabled}' for cam, meta in self.stream_metas.items()]
         self.get_logger().info(f'Luxonis now publishing: {"; ".join(statuses)}')
 
