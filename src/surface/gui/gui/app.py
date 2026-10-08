@@ -8,14 +8,20 @@ from ament_index_python import get_package_share_directory
 from PyQt6.QtWidgets import QApplication, QWidget
 from qt_material import apply_stylesheet
 from rclpy.executors import MultiThreadedExecutor
-
+from rov_msgs.srv import MissionTimerSet
 from gui.gui_node import GUINode
+from rclpy.duration import Duration
+from PyQt6.QtGui import QKeySequence, QShortcut
+from PyQt6.QtCore import pyqtSignal
+from gui.widgets.timer import InteractiveTimer
 
+RESET_SECONDS = 15 * 60  # The number of seconds to set the timer to when reset is clicked
 
 class App(QWidget):
     """Main app window."""
 
     app = QApplication([])
+    set_timer_response_signal: pyqtSignal = pyqtSignal(MissionTimerSet.Response)
 
     def __init__(self, node_name: str) -> None:
         if not rclpy.utilities.ok():
@@ -27,6 +33,24 @@ class App(QWidget):
         self.resize(1850, 720)
 
         atexit.register(self._clean_shutdown)
+
+    #Added stuff
+        self.set_timer_client = GUINode().create_client_multithreaded(
+                MissionTimerSet, 'set_mission_timer'
+            )
+
+        self.timer = InteractiveTimer()
+
+        self.shortcut1 = QShortcut(QKeySequence("Ctrl+T"), self)
+        self.shortcut1.activated.connect(self.timer.toggle_timer)
+
+        
+        self.shortcut2 = QShortcut(QKeySequence("Ctrl+R"), self)
+        self.shortcut2.activated.connect(self.reset_timer)
+
+        self.running = False
+
+
 
     def run_gui(self) -> None:
         # Kills with Control + C
@@ -68,3 +92,24 @@ class App(QWidget):
             self.node.get_logger().info('Exiting.')
             self.node.destroy_node()
             rclpy.shutdown()
+
+    def toggle_timer(self) -> None:
+        """If the ROS timer is running, pause it. If it's paused, resume it."""
+        GUINode().send_request_multithreaded(
+            self.set_timer_client,
+            MissionTimerSet.Request(set_running=True, running=not self.app.running),
+            self.set_timer_response_signal,
+        )
+
+    def reset_timer(self) -> None:
+        """Stop the timer and reset its remaining duration to the default value."""
+        GUINode().send_request_multithreaded(
+            self.set_timer_client,
+            MissionTimerSet.Request(
+                set_time=True,
+                time=Duration(seconds=RESET_SECONDS).to_msg(),
+                set_running=True,
+                running=False,
+            ),
+            self.set_timer_response_signal,
+        )
