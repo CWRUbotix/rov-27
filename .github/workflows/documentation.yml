@@ -7,13 +7,11 @@ on:
       - "documentation/**"
       - .github/workflows/documentation.yml
   workflow_dispatch:
-
 concurrency:
   group: documentation
   cancel-in-progress: true
 permissions:
   contents: write
-
 jobs:
   publish-wiki:
     runs-on: ubuntu-latest
