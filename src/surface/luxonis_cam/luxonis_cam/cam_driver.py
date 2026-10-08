@@ -382,6 +382,9 @@ while True:
         # Connecting script outputs to the stereo node
         script.outputs[self.left_stereo_script_topics.script_output_name].link(stereo_node.left)
         script.outputs[self.right_stereo_script_topics.script_output_name].link(stereo_node.right)
+        # See if works with directly linking the camera nodes to the stereo node instead of going through the script
+        # left_cam_node.requestFullResolutionOutput().link(stereo_node.left)
+        # right_cam_node.requestFullResolutionOutput().link(stereo_node.right)
 
         stereo_node.rectifiedLeft.link(
             script.inputs[self.stream_metas[CAM_IDS.LUX_LEFT_RECT].script_topics.script_input_name]
@@ -395,8 +398,10 @@ while True:
         stereo_node.depth.link(
             script.inputs[self.stream_metas[CAM_IDS.LUX_DEPTH].script_topics.script_input_name]
         )
-        self.left_stereo_toggle_queue = script.inputs['left_stereo_toggle_in'].createInputQueue()
-        self.right_stereo_toggle_queue = script.inputs['right_stereo_toggle_in'].createInputQueue()
+        # These appear twice for some reason, once with left_stereo_toggle and once with left_stereo_toggle_in, same for right
+        # Think correct one is one without _in
+        # self.left_stereo_toggle_queue = script.inputs['left_stereo_toggle_in'].createInputQueue()
+        # self.right_stereo_toggle_queue = script.inputs['right_stereo_toggle_in'].createInputQueue()
 
         self.get_logger().info('Deploying pipeline...')
 
