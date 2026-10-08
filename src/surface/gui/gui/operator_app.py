@@ -1,5 +1,6 @@
 from PyQt6.QtCore import pyqtSignal
 from PyQt6.QtWidgets import QHBoxLayout, QTabWidget, QVBoxLayout, QWidget
+
 from gui.app import App
 from gui.widgets.float_comm import FloatComm
 from gui.widgets.flood_warning import FloodWarning

@@ -9,6 +9,7 @@ from rov_msgs.srv import MissionTimerSet
 
 RESET_SECONDS = 15 * 60  # The number of seconds to set the timer to when reset is clicked
 
+
 class TimerDisplay(QLabel):
     """Widget which displays in real time the time left on a ROS countdown timer."""
 
@@ -59,7 +60,7 @@ class TimerDisplay(QLabel):
         # Round seconds up, so the timer only displays 0 when the time remaining is actually 0
         seconds_left = msg.time_left.sec + (msg.time_left.nanosec > 0)
         self.update_label(seconds_left)
-    
+
 
 class InteractiveTimer(QWidget):
     """An interactive Qt interface for a ROS timer node."""
