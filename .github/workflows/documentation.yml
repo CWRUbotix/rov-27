@@ -6,26 +6,21 @@ on:
       - main
     paths:
       - "documentation/**"
+      - .github/workflows/documentation.yml
   workflow_dispatch:
 
-permissions: write-all
-
-env:
-  GIT_AUTHOR_NAME: Actionbot
-  GIT_AUTHOR_EMAIL: actions@github.com
+concurrency:
+  group: documentation
+  cancel-in-progress: true
+permissions:
+  contents: write
 
 jobs:
-  job-sync-docs-to-wiki:
+  publish-wiki:
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v7
+      - uses: actions/checkout@v7
       - name: Sync docs to wiki
-        uses: newrelic/wiki-sync-action@main
+        uses: Andrew-Chen-Wang/github-wiki-action@v5
         with:
-          source: documentation
-          destination: wiki
-          token: ${{ secrets.GITHUB_TOKEN }} # Automatically created token for each action run
-          gitAuthorName: ${{ env.GIT_AUTHOR_NAME }}
-          gitAuthorEmail: ${{ env.GIT_AUTHOR_EMAIL }}
+          path: documentation/
