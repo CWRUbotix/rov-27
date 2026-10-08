@@ -18,7 +18,7 @@ ROS allows for the creation of nodes, which are separate programs that can all b
 
 ### ROS Publishers and Subscribers
 
-Publishers and subscribers are the main form of communication in ROS. A Node can create a publisher to send a message on a given _topic_. Any Node that wants to listen to those messages can create a subscriber on that same topic so that they will receive any of that type of message. There can be any number of publishers and subscribers for each possible topic. 
+Publishers and subscribers are the main form of communication in ROS. A Node can create a publisher to send a message on a given _topic_. Any Node that wants to listen to those messages can create a subscriber on that same topic so that they will receive any of that type of message. There can be any number of publishers and subscribers for each possible topic.
 
 ### ROS Services
 
@@ -30,7 +30,7 @@ The surface is where much of the heavy computing for the robot is handled becaus
 
 ### Competition Laptop
 
-The competition laptop is plugged into the router, and a second monitor, so that the Operator and Pilot can each have a separate UI. There are many different ROS Nodes that run on the competition laptop. 
+The competition laptop is plugged into the router, and a second monitor, so that the Operator and Pilot can each have a separate UI. There are many different ROS Nodes that run on the competition laptop.
 
 - **flight_control:** This Node takes input from our controller and uses that to send commands to the robot on how it should move.
 - **gui:** This Node controls the display of both our pilot and operator GUIs.
