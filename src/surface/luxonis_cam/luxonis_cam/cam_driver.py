@@ -444,7 +444,7 @@ while True:
                     break
 
             buf = depthai.Buffer()  # TODO: can we create this once and reuse?
-            buf.setData(np.array([1 if enable_stereo else 0], dtype=np.uint8))
+            buf.setData(np.array([1 if enable_stereo else 0], dtype=np.uint8))  # type:ignore[arg-type]
             # Send whether the stereo is enabled using the buffer and it toggles the stereo
             self.left_stereo_toggle_queue.send(buf)
             self.right_stereo_toggle_queue.send(buf)
@@ -453,8 +453,9 @@ while True:
             for cam_id, toggle_queue in self.toggle_queues.items():
                 buf = depthai.Buffer()
                 buf.setData(
-                    np.array([1 if self.stream_metas[cam_id].enabled else 0], dtype=np.uint8)
+                    np.array([1 if self.stream_metas[cam_id].enabled else 0], dtype=np.uint8)  # type:ignore[arg-type]
                 )
+
                 toggle_queue.send(buf)
 
             self.missed_sends = 0

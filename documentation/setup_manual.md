@@ -107,7 +107,7 @@ At this point you should have the following:
 
 10. Plug the controller (component 10) in. You can plug it directly into the right-hand side of the laptop, or into the USB port on the righthand side of the control box. If the controller is missing a cord, it takes a USB-c data cable.
 
-11. Prop the computer up on the laptop stand to the right of the control box. If the actual laptop stand is unavailable, use 2-3 books if in the bay, or 3 dry kickboards if at the pool. The goal is to have the ports of the laptop be level with the edge of the control box so that the cords don't bend as much. 
+11. Prop the computer up on the laptop stand to the right of the control box. If the actual laptop stand is unavailable, use 2-3 books if in the bay, or 3 dry kickboards if at the pool. The goal is to have the ports of the laptop be level with the edge of the control box so that the cords don't bend as much.
 
 12. Plug the right-most USB-c cord into the USB-c ports on the left side of the competition laptop.
 
@@ -135,7 +135,7 @@ If you are using the pnuematics, proceed to [Setting up pnuematics](#setting-up-
 
 4. Turn the compressor on with the switch on the back left of the compressor.
 
-5. Ensure that once the compressor has finished running, the righthand dial on the compressor reads 40 psi. 
+5. Ensure that once the compressor has finished running, the righthand dial on the compressor reads 40 psi.
 
 ### Connecting the Robot
 
@@ -169,7 +169,7 @@ The control box should look like the following (photo does not include pnuematic
 
     a. **Main Power Supply:** Flip the big black switch and then the small metal switch to the on positions.
 
-    b. **Backup Power Supply:** Flip the red power switch to the on position. 
+    b. **Backup Power Supply:** Flip the red power switch to the on position.
 
     After this, you should hear the fans on the power supply start running.
 

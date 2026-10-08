@@ -62,7 +62,7 @@ class PilotApp(App):
 
         if gui_type == GuiType.PILOT:
             # TODO: Maybe remove the PILOT/DEBUG distinction now that PILOT is horizontal again
-            self.setWindowTitle('Pilot GUI - CWRUbotix ROV 2025')
+            self.setWindowTitle('Pilot GUI - CWRUbotix ROV 2027')
 
             video_layout = QHBoxLayout()
 
@@ -82,7 +82,7 @@ class PilotApp(App):
 
             main_layout.addLayout(top_bar)
 
-            self.setWindowTitle('Livestream GUI - CWRUbotix ROV 2025')
+            self.setWindowTitle('Livestream GUI - CWRUbotix ROV 2027')
 
             video_layout = QHBoxLayout()
 
@@ -94,7 +94,7 @@ class PilotApp(App):
             main_layout.addStretch()
 
         else:
-            self.setWindowTitle('Debug GUI - CWRUbotix ROV 2025')
+            self.setWindowTitle('Debug GUI - CWRUbotix ROV 2027')
 
             video_layout = QHBoxLayout()
 

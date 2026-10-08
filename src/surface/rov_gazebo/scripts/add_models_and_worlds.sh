@@ -2,9 +2,9 @@
 
 # Add GZ_SIM_SYSTEM_PLUGIN_PATH to .bashrc only if it isn't already there
 ROV_PATH=$(pwd)
-if ! [[ $ROV_PATH == *rov-25 ]]
+if ! [[ $ROV_PATH == *rov-27 ]]
 then
-    echo "Not run from */rov-25 directory"
+    echo "Not run from */rov-27 directory"
     echo "Run from $ROV_PATH"
     exit 1
 fi

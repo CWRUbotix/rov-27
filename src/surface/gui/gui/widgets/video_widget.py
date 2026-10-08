@@ -1,4 +1,4 @@
-from collections.abc import Callable, Sequence
+from collections.abc import Sequence
 from dataclasses import dataclass
 from enum import IntEnum
 from typing import NamedTuple
@@ -111,7 +111,7 @@ class VideoWidget(QWidget):
     def __init__(
         self,
         camera_description: CameraDescription,
-        make_label: Callable[[], QLabel] = lambda: QLabel(),
+        label: QLabel | None = None,
     ) -> None:
         super().__init__()
 
@@ -120,7 +120,11 @@ class VideoWidget(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.video_frame_label = make_label()
+        if label:
+            self.video_frame_label = label
+        else:
+            self.video_frame_label = QLabel()
+
         layout.addWidget(self.video_frame_label)
 
         self.label = QLabel(camera_description.label)
@@ -197,14 +201,14 @@ class SwitchableVideoWidget(VideoWidget):
         camera_descriptions: Sequence[CameraDescription],
         controller_button_topic: str,
         default_cam_num: int = 0,
-        make_label: Callable[[], QLabel] = lambda: QLabel(),
+        label: QLabel | None = None,
     ) -> None:
         self.camera_descriptions = camera_descriptions
         self.active_cam = default_cam_num
 
         self.num_of_cams = len(camera_descriptions)
 
-        super().__init__(camera_descriptions[self.active_cam], make_label=make_label)
+        super().__init__(camera_descriptions[self.active_cam], label=label)
 
         self.button: QPushButton = QPushButton(camera_descriptions[self.active_cam].label)
         self.button.setMaximumWidth(self.BUTTON_WIDTH)

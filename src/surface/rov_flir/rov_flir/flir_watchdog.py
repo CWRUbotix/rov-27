@@ -4,6 +4,7 @@ import re
 import subprocess
 from signal import SIGINT
 from subprocess import Popen, TimeoutExpired
+from typing import IO
 
 import rclpy
 from rclpy.executors import MultiThreadedExecutor
@@ -104,7 +105,11 @@ class Watchdog:
         if self.process.stdout is None:
             raise RuntimeError('Child process has no stdout')
 
-        return self.process.stdout.readline()
+        if self.process.stdout:
+            stdout: IO[bytes] = self.process.stdout
+            return stdout.readline()
+
+        return b''
 
     def poll(self) -> None:
         """Actively keep the process alive if should_be_alive is set."""
