@@ -96,7 +96,7 @@ class App(QWidget):
         """If the ROS timer is running, pause it. If it's paused, resume it."""
         GUINode().send_request_multithreaded(
             self.set_timer_client,
-            MissionTimerSet.Request(set_running=True, running=not self.app.running),
+            MissionTimerSet.Request(set_running=True, running=not self.running),
             self.set_timer_response_signal,
         )
 
