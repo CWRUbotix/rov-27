@@ -11,7 +11,7 @@ from rclpy.executors import MultiThreadedExecutor
 from rclpy.node import Node
 from rclpy.qos import qos_profile_system_default
 
-from rov_msgs.msg import Heartbeat, Manip, VehicleState, VideoWidgetSwitch
+from rov_msgs.msg import Heartbeat, Manip, MotorTest, VehicleState, VideoWidgetSwitch
 from rov_msgs.srv import VehicleArming
 
 os.environ['MAVLINK20'] = '1'  # Force mavlink 2.0 for pymavlink
@@ -171,6 +171,10 @@ class MavlinkManualControlNode(Node):
 
         self.heartbeat_subscription = self.create_subscription(
             Heartbeat, 'pi_heartbeat', self.pi_heartbeat_callback, 10
+        )
+
+        self.motor_test_subscription = self.create_subscription(
+            MotorTest, "motor_test", self.test_motor, qos_profile_system_default
         )
 
         self.arming_service = self.create_service(
@@ -635,6 +639,24 @@ class MavlinkManualControlNode(Node):
                         buttons += [False, False]
 
             self.controller_callback(JoystickState(axes=axes, buttons=buttons))
+
+    def test_motor(self, test_msg: MotorTest) -> None:
+        # Clamp the throttle percent to between 0 and 100
+        throttle_percent = max(min(test_msg.throttle_percent, 100), 0)
+
+        self.mavlink.mav.command_long_send(
+            self.mavlink.target_system,
+            self.mavlink.target_component,
+            mavutil.mavlink.MAV_CMD_DO_MOTOR_TEST,
+            0,
+            throttle_percent,
+            0, # Interpret the speed as a percent
+            test_msg.throttle_percent,
+            0,
+            0,
+            2,
+            0,
+        )
 
 
 def main() -> None:
