@@ -1,2 +1,2 @@
 uint16 motor_id
-uint16 throttle_percent
+float32 throttle_percent

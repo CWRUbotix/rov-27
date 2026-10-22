@@ -111,8 +111,10 @@ class ThrusterTester(QWidget):
         throttle_percent = 50 * throttle + 50  # Rescale to be from 0 to 100, with 50 at the center
 
         start_time = time.time()
-        motor_test_msg = MotorTest(motor_id=motor_index, throttle_percent=throttle_percent)
-        self.motor_test_publisher.publish(motor_test_msg)
+        while time.time() - start_time < duration:
+            motor_test_msg = MotorTest(motor_id=motor_index, throttle_percent=throttle_percent)
+            self.motor_test_publisher.publish(motor_test_msg)
+            time.sleep(0.05)
         # while time.time() - start_time < duration:
         #     GUINode().send_request_multithreaded(
         #         self.cmd_client,
@@ -133,7 +135,7 @@ class ThrusterTester(QWidget):
         Thread(target=self.send_test_message, daemon=True, name='thruster_test_thread').start()
 
     def send_test_message(self) -> None:
-        for motor_index in range(self.MOTOR_COUNT):
+        for motor_index in range(1, self.MOTOR_COUNT + 1):
             GUINode().get_logger().info(f'Testing thruster {motor_index}')
             self.test_motor_for_time(motor_index, self.TEST_THROTTLE, self.TEST_LENGTH)
             self.test_motor_for_time(motor_index, 0.0, 0.5)

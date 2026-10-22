@@ -643,18 +643,19 @@ class MavlinkManualControlNode(Node):
     def test_motor(self, test_msg: MotorTest) -> None:
         # Clamp the throttle percent to between 0 and 100
         throttle_percent = max(min(test_msg.throttle_percent, 100), 0)
+        self._logger.info(f'testing {test_msg.motor_id} {throttle_percent}')
 
         self.mavlink.mav.command_long_send(
             self.mavlink.target_system,
             self.mavlink.target_component,
             mavutil.mavlink.MAV_CMD_DO_MOTOR_TEST,
             0,
-            throttle_percent,
+            float(test_msg.motor_id),
             0, # Interpret the speed as a percent
-            test_msg.throttle_percent,
+            throttle_percent,
             0,
             0,
-            2,
+            2.0,
             0,
         )
 
