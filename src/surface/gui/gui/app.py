@@ -93,7 +93,7 @@ class App(QWidget):
 
     def toggle_timer(self) -> None:
         """
-        If the ROS timer is running, pause it. 
+        If the ROS timer is running, pause it.
         If it's paused, resume it.
         """
         GUINode().send_request_multithreaded(
