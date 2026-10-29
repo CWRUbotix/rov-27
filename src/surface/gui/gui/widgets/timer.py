@@ -117,7 +117,9 @@ class InteractiveTimer(QWidget):
             self.toggle_btn.setText('Start')
 
     def toggle_timer(self) -> None:
-        """If the ROS timer is running, pause it. If it's paused, resume it."""
+        """
+        If the ROS timer is running, pause it. If it's paused, resume it.
+        """
         GUINode().send_request_multithreaded(
             self.set_timer_client,
             MissionTimerSet.Request(set_running=True, running=not self.timer.running),
@@ -125,7 +127,9 @@ class InteractiveTimer(QWidget):
         )
 
     def reset_timer(self) -> None:
-        """Stop the timer and reset its remaining duration to the default value."""
+        """
+        Stop the timer and reset its remaining duration to the default value.
+        """
         GUINode().send_request_multithreaded(
             self.set_timer_client,
             MissionTimerSet.Request(
