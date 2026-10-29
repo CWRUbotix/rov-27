@@ -36,7 +36,6 @@ class App(QWidget):
 
         atexit.register(self._clean_shutdown)
 
-        # Added stuff
         self.set_timer_client = GUINode().create_client_multithreaded(
             MissionTimerSet, 'set_mission_timer'
         )
@@ -93,7 +92,10 @@ class App(QWidget):
             rclpy.shutdown()
 
     def toggle_timer(self) -> None:
-        """If the ROS timer is running, pause it. If it's paused, resume it."""
+        """
+        If the ROS timer is running, pause it. 
+        If it's paused, resume it.
+        """
         GUINode().send_request_multithreaded(
             self.set_timer_client,
             MissionTimerSet.Request(set_running=True, running=not self.running),
@@ -101,7 +103,9 @@ class App(QWidget):
         )
 
     def reset_timer(self) -> None:
-        """Stop the timer and reset its remaining duration to the default value."""
+        """
+        Stop the timer and reset its remaining duration to the default value.
+        """
         GUINode().send_request_multithreaded(
             self.set_timer_client,
             MissionTimerSet.Request(
