@@ -174,7 +174,7 @@ class MavlinkManualControlNode(Node):
         )
 
         self.motor_test_subscription = self.create_subscription(
-            MotorTest, "motor_test", self.test_motor, qos_profile_system_default
+            MotorTest, 'motor_test', self.test_motor, qos_profile_system_default
         )
 
         self.arming_service = self.create_service(

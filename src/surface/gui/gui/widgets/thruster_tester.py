@@ -88,7 +88,7 @@ class ThrusterTester(QWidget):
         layout.addWidget(test_button)
 
         self.motor_test_publisher = GUINode().create_publisher(
-            MotorTest, "motor_test", qos_profile_system_default
+            MotorTest, 'motor_test', qos_profile_system_default
         )
 
     def test_motor_for_time(self, motor_index: int, throttle: float, duration: float) -> None:
@@ -115,30 +115,13 @@ class ThrusterTester(QWidget):
             motor_test_msg = MotorTest(motor_id=motor_index, throttle_percent=throttle_percent)
             self.motor_test_publisher.publish(motor_test_msg)
             time.sleep(0.05)
-        # while time.time() - start_time < duration:
-        #     GUINode().send_request_multithreaded(
-        #         self.cmd_client,
-        #         CommandLong.Request(
-        #             command=209,  # MAV_CMD_DO_MOTOR_TEST
-        #             param1=float(motor_index),  # Motor number
-        #             param2=0.0,  # MOTOR_TEST_THROTTLE_PERCENT
-        #             param3=float(throttle_percent),
-        #             param4=0.0,  # Time between tests
-        #             param5=0.0,  # Number of motors to test
-        #             param6=2.0,  # MOTOR_TEST_ORDER_BOARD
-        #         ),
-        #         self.command_response_signal,
-        #     )
-        #     time.sleep(0.05)
 
     def async_send_message(self) -> None:
         Thread(target=self.send_test_message, daemon=True, name='thruster_test_thread').start()
 
     def send_test_message(self) -> None:
         for motor_index in range(1, self.MOTOR_COUNT + 1):
-            GUINode().get_logger().info(f'Testing thruster {motor_index}')
-            self.test_motor_for_time(motor_index, self.TEST_THROTTLE, self.TEST_LENGTH)
-            self.test_motor_for_time(motor_index, 0.0, 0.5)
+            self.send_single_test_message(motor_index)
 
     def send_pin_assignments(self) -> None:
         # TODO: Send the pin assignments inputted by the user to the pixhawk as parameters
@@ -147,4 +130,6 @@ class ThrusterTester(QWidget):
         pass
 
     def send_single_test_message(self, motor_index: int) -> None:
-        pass
+        GUINode().get_logger().info(f'Testing thruster {motor_index}')
+        self.test_motor_for_time(motor_index, self.TEST_THROTTLE, self.TEST_LENGTH)
+        self.test_motor_for_time(motor_index, 0.0, 0.5)
