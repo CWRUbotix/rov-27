@@ -224,10 +224,10 @@ class SwitchableVideoWidget(VideoWidget):
             label_layout.setContentsMargins(0, 0, 0, 10)
             h_wrapper = QHBoxLayout()
 <<<<<<< HEAD
-            h_wrapper.addStretch(1)             
-            h_wrapper.addWidget(container_widget, 3) 
-            h_wrapper.addStretch(1)              
-            
+            h_wrapper.addStretch(1)
+            h_wrapper.addWidget(container_widget, 3)
+            h_wrapper.addStretch(1)
+
             for _i in range(self.num_of_cams):
 =======
             h_wrapper.addStretch(1)
