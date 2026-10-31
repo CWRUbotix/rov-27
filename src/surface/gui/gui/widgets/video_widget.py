@@ -9,11 +9,13 @@ from cv_bridge import CvBridge
 from numpy.typing import NDArray
 from PyQt6.QtCore import Qt, pyqtBoundSignal, pyqtSignal, pyqtSlot
 from PyQt6.QtGui import QImage, QMouseEvent, QPixmap
-from PyQt6.QtWidgets import QLabel, QPushButton, QVBoxLayout, QWidget
+from PyQt6.QtWidgets import QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QWidget
 from rclpy.qos import qos_profile_default
 from sensor_msgs.msg import Image
 
 from gui.gui_node import GUINode
+from gui.styles.custom_styles import WidgetState
+from gui.widgets.circle import CircleIndicator
 from rov_msgs.msg import VideoWidgetSwitch
 from rov_msgs.srv import CameraManage
 
@@ -216,6 +218,32 @@ class SwitchableVideoWidget(VideoWidget):
 
         layout = self.layout()
         if isinstance(layout, QVBoxLayout):
+            self.indicators = []
+            container_widget = QWidget()
+            label_layout = QHBoxLayout(container_widget)
+            label_layout.setContentsMargins(0, 0, 0, 10)
+            h_wrapper = QHBoxLayout()
+<<<<<<< HEAD
+            h_wrapper.addStretch(1)
+            h_wrapper.addWidget(container_widget, 3)
+            h_wrapper.addStretch(1)
+
+            for _i in range(self.num_of_cams):
+=======
+            h_wrapper.addStretch(1)
+            h_wrapper.addWidget(container_widget, 3)
+            h_wrapper.addStretch(1)
+
+            for i in range(self.num_of_cams):
+>>>>>>> a841447450bb54d96e99725cd7324c1fb01be03a
+                indicator_circle = CircleIndicator(radius=10)
+                self.indicators.append(indicator_circle)
+                label_layout.addWidget(indicator_circle)
+            if len(self.indicators) > 0:
+                self.indicators[0].set_state(WidgetState.ON)
+
+            layout.addLayout(h_wrapper)
+            layout.addLayout(label_layout)
             layout.addWidget(self.button, alignment=Qt.AlignmentFlag.AlignCenter)
         else:
             GUINode().get_logger().error('Missing Layout')
@@ -241,6 +269,9 @@ class SwitchableVideoWidget(VideoWidget):
         else:
             self.active_cam = index
         self.active_cam %= self.num_of_cams
+        for i in range(len(self.indicators)):
+            self.indicators[i].set_state(WidgetState.INACTIVE)
+        self.indicators[self.active_cam].set_state(WidgetState.ON)
 
         # Update Camera Description
         new_cam_description = self.camera_descriptions[self.active_cam]
