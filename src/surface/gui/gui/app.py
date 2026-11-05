@@ -103,9 +103,7 @@ class App(QWidget):
         )
 
     def reset_timer(self) -> None:
-        """
-        Stop the timer and reset its remaining duration to the default value.
-        """
+        """Stop the timer and reset its remaining duration to the default value."""
         GUINode().send_request_multithreaded(
             self.set_timer_client,
             MissionTimerSet.Request(
