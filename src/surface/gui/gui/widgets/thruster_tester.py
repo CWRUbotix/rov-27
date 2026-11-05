@@ -16,6 +16,7 @@ from rclpy.qos import qos_profile_system_default
 
 from gui.gui_node import GUINode
 from rov_msgs.msg import MotorTest
+from functools import partial
 
 # Buttons to test each thruster
 # Call command to test thruster
@@ -42,20 +43,20 @@ class ThrusterTester(QWidget):
         self.pin_input_widgets = []
 
         pin_number_validator = QIntValidator()
-        pin_number_validator.setRange(0, self.MOTOR_COUNT - 1)
+        pin_number_validator.setRange(1, self.MOTOR_COUNT)
 
         for i in range(self.MOTOR_COUNT):
-            pin_label = QLabel(str(i))
+            pin_label = QLabel(str(i+1))
             pin_label.setMaximumWidth(20)
             pin_input = QLineEdit()
             pin_input.setValidator(pin_number_validator)
-            pin_input.insert(str(i))
+            pin_input.insert(str(i+1))
             pin_input.setMaximumWidth(40)
             self.pin_input_widgets.append(pin_input)
 
             pin_test_button = QPushButton('Test')
             # The i=i makes sure that it uses the value of i from this loop instead of the last loop
-            pin_test_button.clicked.connect(lambda i=i: self.send_single_test_message(i))
+            pin_test_button.clicked.connect(partial(self.send_single_test_message, i))
 
             on_first_column = i < self.MOTOR_COUNT / 2
             column = 1 if on_first_column else 5
@@ -120,7 +121,7 @@ class ThrusterTester(QWidget):
         Thread(target=self.send_test_message, daemon=True, name='thruster_test_thread').start()
 
     def send_test_message(self) -> None:
-        for motor_index in range(1, self.MOTOR_COUNT + 1):
+        for motor_index in range(0, self.MOTOR_COUNT):
             self.send_single_test_message(motor_index)
 
     def send_pin_assignments(self) -> None:
@@ -130,6 +131,6 @@ class ThrusterTester(QWidget):
         pass
 
     def send_single_test_message(self, motor_index: int) -> None:
-        GUINode().get_logger().info(f'Testing thruster {motor_index}')
+        GUINode().get_logger().info(f'Testing thruster {motor_index + 1}')
         self.test_motor_for_time(motor_index, self.TEST_THROTTLE, self.TEST_LENGTH)
         self.test_motor_for_time(motor_index, 0.0, 0.5)
