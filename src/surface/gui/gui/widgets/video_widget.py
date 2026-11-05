@@ -223,10 +223,12 @@ class SwitchableVideoWidget(VideoWidget):
             label_layout = QHBoxLayout(container_widget)
             label_layout.setContentsMargins(0, 0, 0, 10)
             h_wrapper = QHBoxLayout()
+
             h_wrapper.addStretch(1)             
             h_wrapper.addWidget(container_widget, 3) 
             h_wrapper.addStretch(1)              
-            
+        
+
             for _i in range(self.num_of_cams):
                 indicator_circle = CircleIndicator(radius=10)
                 self.indicators.append(indicator_circle)
