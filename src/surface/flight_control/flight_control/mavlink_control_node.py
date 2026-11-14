@@ -11,7 +11,7 @@ from rclpy.executors import MultiThreadedExecutor
 from rclpy.node import Node
 from rclpy.qos import qos_profile_system_default
 
-from rov_msgs.msg import Heartbeat, Manip, VehicleState, VideoWidgetSwitch
+from rov_msgs.msg import Heartbeat, Manip, VehicleState, VideoWidgetSwitch, Flooding
 from rov_msgs.srv import VehicleArming
 
 os.environ['MAVLINK20'] = '1'  # Force mavlink 2.0 for pymavlink
@@ -168,19 +168,23 @@ class MavlinkManualControlNode(Node):
         
         LEAK = mavutil.mavlink.MAV_SYS_STATUS_SENSOR_LEAK
         
-        while True:
-    msg = master.recv_match(type="SYS_STATUS", blocking=True)
 
-    if msg is None:
-        continue
 
-    present = msg.onboard_control_sensors_present
-    enabled = msg.onboard_control_sensors_enabled
-    health = msg.onboard_control_sensors_health
 
-    print("SYS_STATUS received")
+        sys_id = self.mavlink.target_system
+        comp_id = self.mavlink.target_component
+
+        print("before msg")
         
-        # connect thing and see what output it shows
+        msg = self.mavlink.recv_match(type="STATUSTEXT", blocking=True)
+        print("recieved hopefully")
+        print(msg.severity)
+        text = msg.text
+        print(text)
+
+        
+        print("thing sent")
+        
 
         self.state_publisher = self.create_publisher(
             VehicleState, 'vehicle_state_event', qos_profile_system_default
@@ -189,6 +193,10 @@ class MavlinkManualControlNode(Node):
         self.heartbeat_subscription = self.create_subscription(
             Heartbeat, 'pi_heartbeat', self.pi_heartbeat_callback, 10
         )
+
+        self.flooding_publisher = self.create_publisher(
+                            Flooding, "flooding", qos_profile_system_default
+                                    )
 
         self.arming_service = self.create_service(
             VehicleArming, 'arming', callback=self.arming_service_callback
@@ -555,6 +563,7 @@ class MavlinkManualControlNode(Node):
         return new_state
 
     def poll_mavlink_for_new_state(self) -> VehicleState:
+        #print("IN poll_mavlink_for_new_state")
         """Read incoming mavlink messages to determine the state of the vehicle.
 
         Returns
@@ -575,8 +584,15 @@ class MavlinkManualControlNode(Node):
                 mavlink_msg.get_srcComponent() != VEHICLE_COMPONENT_ID
                 or mavlink_msg.get_type() != 'HEARTBEAT'
             ):
+                #print("IN HERHEHEHEH")
+                if mavlink_msg.get_type() == 'STATUSTEXT':
+                    print("YOYOOY")
+                    self.flooding_publisher.publish(Flooding(flooding=True) )
+                    
+                    
                 continue
             new_state = self.parse_heartbeat_for_state(mavlink_msg, new_state)
+            
 
         return new_state
 
